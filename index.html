@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>BestellApp</title>
 
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,9 +17,30 @@
     <body>
         <header class="bg-orange">
             <div class="header-div width-1920 padding-sides-60">
-                <img src="./assets/Logo/Logo.png">
+                <img src="./assets/Logo/Logo.png" />
             </div>
         </header>
+
+        <main>
+            <div class="main-div width-1920">
+                <div id="restaurant" class="restaurant">
+                    <div class="hero-img">
+                        <img src="./assets/Logo/SakuraRamen.png" alt="">
+                    </div>
+                    <section id="restaurant-info" class="padding-sides-60 restaurant-info">
+                        <h1>SAKURA RAMEN</h1>
+                        <div class="star"><img src="./assets/icons/star-solid-24.png"> 4,7/5 </div>
+                    </section>
+                </div>
+                <div id="basket" class="basket"></div>
+            </div>
+        </main>
+
+        <footer class="bg-grey">
+            <div class="footer-div width-1920 padding-sides-60">
+                <img src="./assets/Favicon/android-chrome-512x512.png" />
+            </div>
+        </footer>
     </body>
     <script src="script.js"></script>
 </html>
