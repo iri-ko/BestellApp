@@ -1,0 +1,17 @@
+*{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.width-1920 {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bg-orange {
+    background-color: #ff8000;
+}
