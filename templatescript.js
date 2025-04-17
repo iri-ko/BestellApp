@@ -25,7 +25,7 @@ function getBasketItemTemplate(basketItemIndex){
                             </div>   
                             <div id="order-amount${basketItemIndex}" class="order-amount">
                                 <div id="add-substract${basketItemIndex}" class="add-substract">
-                                    <img  src="./assets/icons/minus-circle-regular-24.png">
+                                    <img onclick="amountMinus(${basketItemIndex})" src="./assets/icons/minus-circle-regular-24.png">
                                     <div id="amount${basketItemIndex}">${myDishes[basketItemIndex].amount}</div>
                                     <img onclick="amountPlus(${basketItemIndex})" src="./assets/icons/plus-circle-regular-24.png">
                                 </div>

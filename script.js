@@ -64,6 +64,11 @@ function addToAmount(amountIndex){
     return newAmount
 }
 
+function substractFromAmount(amountIndex){
+    const newAmount = myDishes[amountIndex].amount += -1; //adds plus 1 to amount
+    return newAmount
+}
+
 function renderBasketItem() {
     const basketContentRef = document.getElementById('basket-content');
     basketContentRef.innerHTML = ""; // clear basket to avoid double rendering
@@ -80,11 +85,18 @@ function getUpdatedPrice(basketItemIndex){
     return uptadedPrice.toFixed(2).replace(".", ","); //return price but as string and with , instead of .
 }
 
-function amountPlus(basketItemIndex){
-    addToAmount(basketItemIndex); //amount plus 1
+function amountPlus(plusItemIndex){
+    addToAmount(plusItemIndex); //amount plus 1
 
-    updateTotalItemAmount(basketItemIndex); //show new amount
-    updateTotalItemPrice(basketItemIndex); //show newly calculated price
+    updateTotalItemAmount(plusItemIndex); //show new amount
+    updateTotalItemPrice(plusItemIndex); //show newly calculated price
+}
+
+function amountMinus(minusItemIndex){
+    substractFromAmount(minusItemIndex); //amount minus 1
+
+    updateTotalItemAmount(minusItemIndex); //show new amount
+    updateTotalItemPrice(minusItemIndex); //show newly calculated price
 }
 
 function updateTotalItemPrice(totalItemPriceIndex) {
@@ -96,4 +108,3 @@ function updateTotalItemAmount(totalItemAmountIndex){
     const bamountRef = document.getElementById(`amount${totalItemAmountIndex}`); //access basket amount element
     bamountRef.innerHTML = `${myDishes[totalItemAmountIndex].amount}`; //update to show current
 }
-
