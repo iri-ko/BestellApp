@@ -97,6 +97,10 @@ function amountMinus(minusItemIndex){
 
     updateTotalItemAmount(minusItemIndex); //show new amount
     updateTotalItemPrice(minusItemIndex); //show newly calculated price
+
+    if(myDishes[minusItemIndex].amount == 0){
+        deleteItem(minusItemIndex);
+    }
 }
 
 function updateTotalItemPrice(totalItemPriceIndex) {
@@ -107,4 +111,13 @@ function updateTotalItemPrice(totalItemPriceIndex) {
 function updateTotalItemAmount(totalItemAmountIndex){
     const bamountRef = document.getElementById(`amount${totalItemAmountIndex}`); //access basket amount element
     bamountRef.innerHTML = `${myDishes[totalItemAmountIndex].amount}`; //update to show current
+}
+
+function deleteItem(deleteIndex){
+    setAmountTo0(deleteIndex);
+    renderBasketItem(deleteIndex);
+}
+
+function setAmountTo0(zeroIndex){
+    myDishes[zeroIndex].amount = 0;
 }

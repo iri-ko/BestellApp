@@ -29,7 +29,7 @@ function getBasketItemTemplate(basketItemIndex){
                                     <div id="amount${basketItemIndex}">${myDishes[basketItemIndex].amount}</div>
                                     <img onclick="amountPlus(${basketItemIndex})" src="./assets/icons/plus-circle-regular-24.png">
                                 </div>
-                                <img src="./assets/icons/trash-regular-24.png" id="delete" class="delete">
+                                <img onclick="deleteItem(${basketItemIndex})" src="./assets/icons/trash-regular-24.png" id="delete" class="delete">
                             </div>
                         </div>`
 }
