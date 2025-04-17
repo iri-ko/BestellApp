@@ -37,6 +37,7 @@ const myDishes = [
 function init() {
     renderMenu();
     updateCurrentSum();
+    updateTotalSum();
 }
 
 function renderMenu() {
@@ -62,6 +63,7 @@ function addDishToBasket(dishIndex) {
     const newAmount = addToAmount(dishIndex);
     renderBasketItem(newAmount);
     updateCurrentSum();
+    updateTotalSum();
 }
 
 function addToAmount(amountIndex) {
@@ -103,6 +105,7 @@ function amountPlus(plusItemIndex) {
     updateTotalItemAmount(plusItemIndex); //show new amount
     updateTotalItemPrice(plusItemIndex); //show newly calculated price
     updateCurrentSum();
+    updateTotalSum();
 }
 
 function amountMinus(minusItemIndex) {
@@ -116,6 +119,7 @@ function amountMinus(minusItemIndex) {
     }
 
     updateCurrentSum();
+    updateTotalSum();
 }
 
 function updateTotalItemPrice(totalItemPriceIndex) {
@@ -132,12 +136,14 @@ function deleteItem(deleteIndex) {
     myDishes[deleteIndex].amount = 0; //sets the amount directly to 0
     renderBasketItem(deleteIndex); //renders whole container new, and since this item now has amouunt of 0, it won't render
     updateCurrentSum();
+    updateTotalSum();
 }
 
 function updateCurrentSum() {
     const currentSumRef = document.getElementById(`current-sum`);
     currentSumRef.innerHTML = "";
-    currentSumRef.innerHTML = calcCurrentSum().toFixed(2).replace(".", ",") + " €";
+    currentSumRef.innerHTML =
+        calcCurrentSum().toFixed(2).replace(".", ",") + " €";
 }
 
 function calcCurrentSum() {
@@ -147,4 +153,11 @@ function calcCurrentSum() {
         currentPrice += myDishes[sumIndex].price * myDishes[sumIndex].amount;
     }
     return currentPrice;
+}
+
+function updateTotalSum() {
+    const totalSumRef = document.getElementById(`total-sum`);
+    totalSumRef.innerHTML = "";
+    const totalSum = calcCurrentSum() + 2.99;
+    totalSumRef.innerHTML = totalSum.toFixed(2).replace(".", ",") + " €";
 }
