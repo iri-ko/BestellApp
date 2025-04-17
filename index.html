@@ -13,17 +13,21 @@
             href="https://fonts.googleapis.com/css2?family=Montserrat+Underline:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
         />
+        <link rel="shortcut icon" href="./assets/Favicon/android-chrome-192x192.png" type="image/x-icon">
     </head>
     <body onload="init()">
         <header class="bg-orange">
             <div class="header-div width-1920 padding-sides-60">
                 <img src="./assets/Logo/Logo.png" />
+                <div>
+                <img onclick="toggleResponsiveBasket()" class="cart" src="./assets/icons/cart-solid.png">
+                <div id="basket-counter" class="basket-counter d-none bg-grey">x</div>
             </div>
         </header>
 
         <main>
             <div class="main-div width-1920">
-                <img onclick="toggleResponsiveBasket()" class="cart" src="./assets/icons/cart-solid.png">
+                
                 <div id="restaurant" class="restaurant">
                     <div class="hero-img">
                         <img src="./assets/Logo/SakuraRamen.png" alt="" />

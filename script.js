@@ -34,12 +34,13 @@ const myDishes = [
     },
 ];
 
-let baskedDishes =  [];
+let baskedDishes = [];
 
 function init() {
     renderMenu();
     updateCurrentSum();
     updateTotalSum();
+    renderBasketItemCounter()
 }
 
 function renderMenu() {
@@ -69,6 +70,7 @@ function addDishToBasket(dishIndex) {
     renderBasketItem(newAmount);
     updateCurrentSum();
     updateTotalSum();
+    renderBasketItemCounter()
 }
 
 function addToAmount(amountIndex) {
@@ -84,17 +86,21 @@ function substractFromAmount(amountIndex) {
 function renderBasketItem() {
     const basketContentRef = document.getElementById("basket-content");
     basketContentRef.innerHTML = ""; // clear basket to avoid double rendering
-    if (baskedDishes.length == 0){
-        basketContentRef.innerHTML = "Füge dein Lieblingsessen hinzu!"
+    if (baskedDishes.length == 0) {
+        basketContentRef.innerHTML = "Füge dein Lieblingsessen hinzu!";
     }
+    renderBaskedTemplate(basketContentRef);
+}
 
+function renderBaskedTemplate(Ref) {
     for (
         let basketItemIndex = 0;
         basketItemIndex < myDishes.length;
         basketItemIndex++
     ) {
-        if (myDishes[basketItemIndex].amount > 0) {//check if item amount is greater than 0, only then render into basket
-            basketContentRef.innerHTML += getBasketItemTemplate(basketItemIndex);
+        if (myDishes[basketItemIndex].amount > 0) {
+            //check if item amount is greater than 0, only then render into basket
+            Ref.innerHTML += getBasketItemTemplate(basketItemIndex);
         }
     }
 }
@@ -107,27 +113,25 @@ function getUpdatedPrice(basketItemIndex) {
 
 function amountPlus(plusItemIndex) {
     addToAmount(plusItemIndex); //amount plus 1
-
     updateTotalItemAmount(plusItemIndex); //show new amount
     updateTotalItemPrice(plusItemIndex); //show newly calculated price
     updateCurrentSum();
     updateTotalSum();
+    renderBasketItemCounter();
 }
 
 function amountMinus(minusItemIndex) {
     substractFromAmount(minusItemIndex); //amount minus 1
-    
-
+    renderBasketItemCounter();
     updateTotalItemAmount(minusItemIndex); //show new amount
     updateTotalItemPrice(minusItemIndex); //show newly calculated price
-
     if (myDishes[minusItemIndex].amount == 0) {
         baskedDishes.splice(minusItemIndex, 1);
         deleteItem(minusItemIndex);
     }
-
     updateCurrentSum();
     updateTotalSum();
+    
 }
 
 function updateTotalItemPrice(totalItemPriceIndex) {
@@ -146,17 +150,18 @@ function deleteItem(deleteIndex) {
     renderBasketItem(deleteIndex); //renders whole container new, and since this item now has amouunt of 0, it won't render
     updateCurrentSum();
     updateTotalSum();
+    renderBasketItemCounter()
 }
 
 function updateCurrentSum() {
     const currentSumRef = document.getElementById(`current-sum`);
     currentSumRef.innerHTML = "";
-    currentSumRef.innerHTML = calcCurrentSum().toFixed(2).replace(".", ",") + " €";
+    currentSumRef.innerHTML =
+        calcCurrentSum().toFixed(2).replace(".", ",") + " €";
 }
 
 function calcCurrentSum() {
     let currentPrice = 0;
-
     for (let sumIndex = 0; sumIndex < myDishes.length; sumIndex++) {
         currentPrice += myDishes[sumIndex].price * myDishes[sumIndex].amount;
     }
@@ -170,28 +175,55 @@ function updateTotalSum() {
     totalSumRef.innerHTML = totalSum.toFixed(2).replace(".", ",") + " €";
 }
 
-function toggleConfirmationVisibility(){
-    const confirmationRef = document.getElementById('order-confirmation');
-    confirmationRef.classList.toggle('d-none');
-    confirmationRef.classList.toggle('d-flex');
+function toggleConfirmationVisibility() {
+    const confirmationRef = document.getElementById("order-confirmation");
+    confirmationRef.classList.toggle("d-none");
+    confirmationRef.classList.toggle("d-flex");
 }
 
-function order(){
+function order() {
     clearBasket();
     toggleConfirmationVisibility();
+    renderBasketItemCounter();
 }
 
-function clearBasket(){
+function clearBasket() {
     for (let clearIndex = 0; clearIndex < myDishes.length; clearIndex++) {
-        myDishes[clearIndex].amount = 0;        
+        myDishes[clearIndex].amount = 0;
     }
+    baskedDishes = [];
     renderBasketItem();
     updateCurrentSum();
     updateTotalSum();
     toggleConfirmationVisibility();
+    toggleResponsiveBasket(); 
+    renderBasketItemCounter();
 }
 
-function toggleResponsiveBasket(){
-    const basketRef = document.getElementById('obasket');
-    basketRef.classList.toggle('mb-d-none');
+function toggleResponsiveBasket() {
+    const basketRef = document.getElementById("obasket");
+    basketRef.classList.toggle("mb-d-none");
+}
+
+function renderBasketItemCounter(){
+    const counterRef = document.getElementById('basket-counter');
+    counterRef.innerHTML = ""
+    if(totalAmounts() > 0){
+        counterRef.classList.remove('d-none');
+        counterRef.classList.add('d-flex');
+        counterRef.innerHTML = totalAmounts();
+    } else if (baskedDishes.length == 0){
+        counterRef.classList.add('d-none');
+        counterRef.classList.remove('d-flex');
+    }
+}
+
+function totalAmounts(){
+    let totalAmount = 0;
+
+    for (let amountI = 0; amountI < myDishes.length; amountI++) {
+        totalAmount += myDishes[amountI].amount;
+    }
+
+    return totalAmount
 }
