@@ -85,10 +85,8 @@ function renderBasketItem() {
         basketItemIndex < myDishes.length;
         basketItemIndex++
     ) {
-        if (myDishes[basketItemIndex].amount > 0) {
-            //check if item amount is greater than 0, only then render into basket
-            basketContentRef.innerHTML +=
-                getBasketItemTemplate(basketItemIndex);
+        if (myDishes[basketItemIndex].amount > 0) {//check if item amount is greater than 0, only then render into basket
+            basketContentRef.innerHTML += getBasketItemTemplate(basketItemIndex);
         }
     }
 }

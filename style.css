@@ -52,7 +52,7 @@ main {
         display: flex;
 
         .restaurant {
-            width: 80%;
+            width: calc(100% - 350px);
             min-height: calc(100vh - 120px - 130px);
             display: flex;
             flex-direction: column;
@@ -102,10 +102,16 @@ main {
             }
         }
 
-        .basket {
-            width: 20%;
-            min-height: calc(100vh - 120px - 130px);
+        .outside-basket {
+            min-height: calc(100vh - 80px - 130px);
+            width: 350px;
             box-shadow: 0px 0px 10px rgba(88, 88, 88, 0.411);
+            overflow: visible;
+        }
+        .basket {
+            position: sticky;
+            top: 10px; 
+            width: 100%;         
             padding: 20px;
             display: flex;
             flex-direction: column;
