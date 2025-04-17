@@ -292,6 +292,6 @@ footer {
     display: flex;
 }
 
-_.d-none {
+.d-none {
     display: none;
 }

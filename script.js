@@ -159,3 +159,24 @@ function updateTotalSum() {
     const totalSum = calcCurrentSum() + 2.99;
     totalSumRef.innerHTML = totalSum.toFixed(2).replace(".", ",") + " €";
 }
+
+function toggleConfirmationVisibility(){
+    const confirmationRef = document.getElementById('order-confirmation');
+    confirmationRef.classList.toggle('d-none');
+    confirmationRef.classList.toggle('d-flex');
+}
+
+function order(){
+    clearBasket();
+    toggleConfirmationVisibility();
+}
+
+function clearBasket(){
+    for (let clearIndex = 0; clearIndex < myDishes.length; clearIndex++) {
+        myDishes[clearIndex].amount = 0;        
+    }
+    renderBasketItem();
+    updateCurrentSum();
+    updateTotalSum();
+    toggleConfirmationVisibility();
+}

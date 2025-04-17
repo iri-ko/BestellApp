@@ -66,14 +66,14 @@
                             <div id="total-sum">XXX €</div>
                         </div>
 
-                        <button>Jetzt bestellen</button>
+                        <button onclick="clearBasket()">Jetzt bestellen</button>
                     </div>
                 </div>
             </div>
-            <div onclick="removeOverlay('order-confirmation')" id="order-confirmation" class="d-flex d-none confirmation">
+            <div id="order-confirmation" class="d-none confirmation">
                 <h3>Deine Testbestellung bei Sakura Ramen ist eingegangen!</h3>
                 <span>Dein hypothetisches Essen wird bald geliefert.</span>
-                <button>Zurück zum Menü</button>
+                <button onclick="toggleConfirmationVisibility()">Zurück zum Menü</button>
             </div>
         </main>
 
