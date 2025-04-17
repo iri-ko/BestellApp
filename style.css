@@ -106,7 +106,6 @@ main {
             min-height: calc(100vh - 80px - 130px);
             width: 350px;
             box-shadow: 0px 0px 10px rgba(88, 88, 88, 0.411);
-            overflow: visible;
         }
         .basket {
             position: sticky;
@@ -249,4 +248,50 @@ footer {
 .menu-box:hover {
     cursor: pointer;
     background-color: #e6b60746;
+}
+
+.confirmation {
+    position: fixed;
+    height: 300px;
+    width: 60%;
+    background-color: white;
+    z-index: 1000;
+    top: 200px;
+    left: 100px;
+    border-radius: 20px;
+    border: #c9c9c9 solid 2px;
+    box-shadow: 0px 0px 10px rgba(88, 88, 88, 0.411);
+    padding: 20px;
+
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    h3 {
+        font-size: 24px;
+    }
+
+    button {
+        background-color: #E6B507;
+        border: none;
+        border-radius: 20px;
+        color: white;
+        font-size: 26px;
+        padding: 10px 40px;
+        margin-top: 20px;
+        font-weight: 600;
+    }
+    button:hover {
+        background-color: #ff8000;
+        cursor: pointer;;
+    }
+
+}
+
+.d-flex {
+    display: flex;
+}
+
+_.d-none {
+    display: none;
 }
