@@ -23,6 +23,7 @@
 
         <main>
             <div class="main-div width-1920">
+                <img onclick="toggleResponsiveBasket()" class="cart" src="./assets/icons/cart-solid.png">
                 <div id="restaurant" class="restaurant">
                     <div class="hero-img">
                         <img src="./assets/Logo/SakuraRamen.png" alt="" />
@@ -40,7 +41,8 @@
                         <!--RENDER -->
                     </section>
                 </div>
-                <div class="outside-basket">
+
+                <div class="outside-basket d-none" id="obasket">
                     <div id="basket" class="basket">
                         <h2>Warenkorb</h2>
 
@@ -75,6 +77,7 @@
                 <span>Dein hypothetisches Essen wird bald geliefert.</span>
                 <button onclick="toggleConfirmationVisibility()">Zurück zum Menü</button>
             </div>
+
         </main>
 
         <footer class="bg-grey">

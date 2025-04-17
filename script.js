@@ -180,3 +180,8 @@ function clearBasket(){
     updateTotalSum();
     toggleConfirmationVisibility();
 }
+
+function toggleResponsiveBasket(){
+    const basketRef = document.getElementById('obasket');
+    basketRef.classList.toggle('d-none');
+}
