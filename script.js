@@ -53,3 +53,24 @@ function getPrice(priceIndex){
     price = price.replace(".", ",")
     return price
 }
+
+function addDishToBasket(dishIndex){
+    const newAmount = addToAmount(dishIndex);
+    renderBasketItem(dishIndex, newAmount)
+}
+
+function addToAmount(amountIndex){
+    const newAmount = myDishes[amountIndex].amount += 1; //adds plus 1 to amount
+    return newAmount
+}
+
+function renderBasketItem() {
+    const basketContentRef = document.getElementById('basket-content');
+    basketContentRef.innerHTML = ""; // clear basket to avoid double rendering
+
+    for (let basketItemIndex = 0; basketItemIndex < myDishes.length; basketItemIndex++) {
+        if (myDishes[basketItemIndex].amount > 0) { //check if item amount is greater than 0,
+            basketContentRef.innerHTML += getBasketItemTemplate(basketItemIndex);
+        }
+    }
+}
