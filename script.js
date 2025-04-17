@@ -56,7 +56,7 @@ function getPrice(priceIndex){
 
 function addDishToBasket(dishIndex){
     const newAmount = addToAmount(dishIndex);
-    renderBasketItem(dishIndex, newAmount)
+    renderBasketItem(newAmount);
 }
 
 function addToAmount(amountIndex){
@@ -77,5 +77,23 @@ function renderBasketItem() {
 
 function getUpdatedPrice(basketItemIndex){
     const uptadedPrice = myDishes[basketItemIndex].price * myDishes[basketItemIndex].amount;
-    return uptadedPrice.toFixed(2).replace(".", ",");
+    return uptadedPrice.toFixed(2).replace(".", ","); //return price but as string and with , instead of .
 }
+
+function amountPlus(basketItemIndex){
+    addToAmount(basketItemIndex); //amount plus 1
+
+    updateTotalItemAmount(basketItemIndex); //show new amount
+    updateTotalItemPrice(basketItemIndex); //show newly calculated price
+}
+
+function updateTotalItemPrice(totalItemPriceIndex) {
+    const bpriceRef = document.getElementById(`bprice${totalItemPriceIndex}`); //access baskedprice element
+    bpriceRef.innerHTML = `${getUpdatedPrice(totalItemPriceIndex)} €`; //update to current
+}
+
+function updateTotalItemAmount(totalItemAmountIndex){
+    const bamountRef = document.getElementById(`amount${totalItemAmountIndex}`); //access basket amount element
+    bamountRef.innerHTML = `${myDishes[totalItemAmountIndex].amount}`; //update to show current
+}
+
