@@ -7,6 +7,6 @@ function getMenuTemplate(menuIndex) {
                             <div id="description${menuIndex}" class="description">
                             ${myDishes[menuIndex].description}
                             </div>
-                            <div id="price${menuIndex}" class="price">${myDishes[menuIndex].price}</div>
-                        </div>`
+                            <div id="price${menuIndex}" class="price">${myDishes[menuIndex].price} &euro;</div>
+                        </div>`;
 }
