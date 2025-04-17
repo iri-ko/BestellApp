@@ -20,7 +20,7 @@ function getBasketItemTemplate(basketItemIndex){
                                     ${myDishes[basketItemIndex].name}
                                 </div>
                                 <div id="bprice${basketItemIndex}" class="bprice">
-                                    ${getPrice(basketItemIndex)} &euro;
+                                    ${getUpdatedPrice(basketItemIndex)} &euro;
                                 </div>
                             </div>   
                             <div id="order-amount${basketItemIndex}" class="order-amount">

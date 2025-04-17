@@ -69,8 +69,13 @@ function renderBasketItem() {
     basketContentRef.innerHTML = ""; // clear basket to avoid double rendering
 
     for (let basketItemIndex = 0; basketItemIndex < myDishes.length; basketItemIndex++) {
-        if (myDishes[basketItemIndex].amount > 0) { //check if item amount is greater than 0,
+        if (myDishes[basketItemIndex].amount > 0) { //check if item amount is greater than 0, only then render into basket
             basketContentRef.innerHTML += getBasketItemTemplate(basketItemIndex);
         }
     }
+}
+
+function getUpdatedPrice(basketItemIndex){
+    const uptadedPrice = myDishes[basketItemIndex].price * myDishes[basketItemIndex].amount;
+    return uptadedPrice.toFixed(2).replace(".", ",");
 }
