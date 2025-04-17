@@ -34,6 +34,8 @@ const myDishes = [
     },
 ];
 
+let baskedDishes =  [];
+
 function init() {
     renderMenu();
     updateCurrentSum();
@@ -61,6 +63,9 @@ function getPrice(priceIndex) {
 
 function addDishToBasket(dishIndex) {
     const newAmount = addToAmount(dishIndex);
+    if (!baskedDishes.includes(myDishes[dishIndex])) {
+        baskedDishes.push(myDishes[dishIndex]);
+    }
     renderBasketItem(newAmount);
     updateCurrentSum();
     updateTotalSum();
@@ -79,6 +84,9 @@ function substractFromAmount(amountIndex) {
 function renderBasketItem() {
     const basketContentRef = document.getElementById("basket-content");
     basketContentRef.innerHTML = ""; // clear basket to avoid double rendering
+    if (baskedDishes.length == 0){
+        basketContentRef.innerHTML = "Füge dein Lieblingsessen hinzu!"
+    }
 
     for (
         let basketItemIndex = 0;
@@ -108,11 +116,13 @@ function amountPlus(plusItemIndex) {
 
 function amountMinus(minusItemIndex) {
     substractFromAmount(minusItemIndex); //amount minus 1
+    
 
     updateTotalItemAmount(minusItemIndex); //show new amount
     updateTotalItemPrice(minusItemIndex); //show newly calculated price
 
     if (myDishes[minusItemIndex].amount == 0) {
+        baskedDishes.splice(minusItemIndex, 1);
         deleteItem(minusItemIndex);
     }
 
@@ -132,6 +142,7 @@ function updateTotalItemAmount(totalItemAmountIndex) {
 
 function deleteItem(deleteIndex) {
     myDishes[deleteIndex].amount = 0; //sets the amount directly to 0
+    baskedDishes = [];
     renderBasketItem(deleteIndex); //renders whole container new, and since this item now has amouunt of 0, it won't render
     updateCurrentSum();
     updateTotalSum();
@@ -140,8 +151,7 @@ function deleteItem(deleteIndex) {
 function updateCurrentSum() {
     const currentSumRef = document.getElementById(`current-sum`);
     currentSumRef.innerHTML = "";
-    currentSumRef.innerHTML =
-        calcCurrentSum().toFixed(2).replace(".", ",") + " €";
+    currentSumRef.innerHTML = calcCurrentSum().toFixed(2).replace(".", ",") + " €";
 }
 
 function calcCurrentSum() {
@@ -183,5 +193,5 @@ function clearBasket(){
 
 function toggleResponsiveBasket(){
     const basketRef = document.getElementById('obasket');
-    basketRef.classList.toggle('d-none');
+    basketRef.classList.toggle('mb-d-none');
 }

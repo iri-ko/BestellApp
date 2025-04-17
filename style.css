@@ -24,6 +24,10 @@
 
 .padding-sides-60 {
     padding: 0 60px;
+
+    @media (max-width: 650px){
+        padding: 0 20px;
+    }
 }
 
 header {
@@ -68,6 +72,9 @@ main {
             @media (min-width: 1000px) {
                 display: none;
             }
+            @media (max-width: 650px){
+                right: 20px;
+            }
         }
         .cart:hover {
             filter: drop-shadow(0 0 10px #e6b507);
@@ -99,6 +106,10 @@ main {
                     bottom: 20px;
                     left: 60px;
                     border-radius: 10px;
+
+                    @media (max-width: 650px){
+                        left: 20px;
+                    }
                 }
             }
 
@@ -107,8 +118,16 @@ main {
                 justify-content: flex-start;
                 gap: 40px;
 
+                @media (max-width: 450px){
+                    flex-direction: column;
+                    gap: 20px;
+                }
+
                 h1 {
                     font-size: 40px;
+                    @media (max-width: 1200px) {
+                        font-size: 30px;
+                    }
                 }
 
                 .star {
@@ -125,6 +144,10 @@ main {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+
+                @media (max-width: 650px){
+                    padding: 0px 20px 60px 20px;
+                }
             }
         }
 
@@ -132,15 +155,22 @@ main {
             min-height: calc(100vh - 80px - 130px);
             width: 350px;
             box-shadow: 0px 0px 10px rgba(88, 88, 88, 0.411);
+            
             @media (max-width: 1000px){
                 width: 100%;
                 min-height: auto;
                 max-height: 100dvh;
                 padding: 60px;
                 position: fixed;
-                top: 0;
+                top: 80px;
                 z-index: 100;
                 background-color: white;
+
+                @media (max-width: 650px){
+                    padding: 0 20px;
+                }
+
+
             }
 
 
@@ -169,6 +199,12 @@ main {
                             display: flex;
                             justify-content: space-between;
                             font-weight: 600;
+
+                            @media (max-width: 500px){
+                                flex-direction: column;
+                                align-items: flex-start;
+                                gap: 5px;
+                            }
                         }
 
                         .order-amount {
@@ -203,6 +239,12 @@ main {
                 .costs {
                     display: flex;
                     justify-content: space-between;
+
+                    @media (max-width: 500px){
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 5px;
+                    }
                 }
                 .line {
                     height: 1px;
@@ -213,6 +255,12 @@ main {
                     justify-content: space-between;
                     font-weight: bold;
                     font-size: 20px;
+
+                    @media (max-width: 500px){
+                        flex-direction: column;
+                        align-items: flex-end;
+                        gap: 5px;
+                    }
                 }
 
                 button {
@@ -224,6 +272,14 @@ main {
                     padding: 10px;
                     margin-top: 20px;
                     font-weight: 600;
+
+                    @media (max-width: 1000px){
+                        align-self: flex-end;
+                        padding: 10px 40px;
+                    }
+                    @media (max-width: 500px){
+                        font-size: 20px;
+                    }
                 }
                 button:hover {
                     background-color: #ff8000;
@@ -267,6 +323,17 @@ footer {
         justify-content: space-between;
         align-items: center;
 
+        @media (max-width: 350px){
+            flex-direction: column-reverse;
+            gap: 10px;
+        }
+
+        h2{
+            @media (max-width: 750px){
+                font-size: 20px;
+            }
+        }
+
         img {
             height: 30px;
         }
@@ -305,8 +372,30 @@ footer {
     justify-content: space-evenly;
     align-items: center;
 
+    @media (max-width: 600px){
+        width: 80%;
+        Left: 10%;
+        height: auto;
+        gap: 40px;
+    }
+
+
+
     h3 {
         font-size: 24px;
+        
+        @media (max-width: 1300px){
+            text-align: center;
+        }
+        @media (max-width: 1300px){
+        font-size: 20px;
+        }
+    }
+
+    span {
+        @media (max-width: 730px){
+            text-align: center;
+        }
     }
 
     button {
@@ -318,6 +407,11 @@ footer {
         padding: 10px 40px;
         margin-top: 20px;
         font-weight: 600;
+
+        @media (max-width: 700px){
+            font-size: 20px;
+        }
+        
     }
     button:hover {
         background-color: #ff8000;
@@ -331,4 +425,10 @@ footer {
 
 .d-none {
     display: none;
+}
+
+.mb-d-none {
+    @media (max-width: 1000px){
+        display: none;
+    }
 }
