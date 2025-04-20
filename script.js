@@ -203,6 +203,13 @@ function clearBasket() {
 function toggleResponsiveBasket() {
     const basketRef = document.getElementById("obasket");
     basketRef.classList.toggle("mb-d-none");
+    
+    // Disable or enable scrolling based on the basket's visibility
+    if (basketRef.classList.contains("mb-d-none")) {
+        document.body.style.overflow = ''; // Enable scrolling
+    } else {
+        document.body.style.overflow = 'hidden'; // Disable scrolling
+    }
 }
 
 function renderBasketItemCounter(){
