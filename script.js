@@ -40,7 +40,7 @@ function init() {
     renderMenu();
     updateCurrentSum();
     updateTotalSum();
-    renderBasketItemCounter()
+    renderBasketItemCounter();
 }
 
 function renderMenu() {
@@ -70,7 +70,7 @@ function addDishToBasket(dishIndex) {
     renderBasketItem(newAmount);
     updateCurrentSum();
     updateTotalSum();
-    renderBasketItemCounter()
+    renderBasketItemCounter();
 }
 
 function addToAmount(amountIndex) {
@@ -131,7 +131,6 @@ function amountMinus(minusItemIndex) {
     }
     updateCurrentSum();
     updateTotalSum();
-    
 }
 
 function updateTotalItemPrice(totalItemPriceIndex) {
@@ -150,7 +149,7 @@ function deleteItem(deleteIndex) {
     renderBasketItem(deleteIndex); //renders whole container new, and since this item now has amouunt of 0, it won't render
     updateCurrentSum();
     updateTotalSum();
-    renderBasketItemCounter()
+    renderBasketItemCounter();
 }
 
 function updateCurrentSum() {
@@ -196,41 +195,39 @@ function clearBasket() {
     updateCurrentSum();
     updateTotalSum();
     toggleConfirmationVisibility();
-    toggleResponsiveBasket(); 
+    toggleResponsiveBasket();
     renderBasketItemCounter();
 }
 
 function toggleResponsiveBasket() {
     const basketRef = document.getElementById("obasket");
     basketRef.classList.toggle("mb-d-none");
-    
-    // Disable or enable scrolling based on the basket's visibility
     if (basketRef.classList.contains("mb-d-none")) {
-        document.body.style.overflow = ''; // Enable scrolling
+        document.body.style.overflow = "";
+        document.body.style.position = "";
     } else {
-        document.body.style.overflow = 'hidden'; // Disable scrolling
+        document.body.style.overflow = "hidden"; 
+        document.body.style.position = "fixed";
     }
 }
 
-function renderBasketItemCounter(){
-    const counterRef = document.getElementById('basket-counter');
-    counterRef.innerHTML = ""
-    if(totalAmounts() > 0){
-        counterRef.classList.remove('d-none');
-        counterRef.classList.add('d-flex');
+function renderBasketItemCounter() {
+    const counterRef = document.getElementById("basket-counter");
+    counterRef.innerHTML = "";
+    if (totalAmounts() > 0) {
+        counterRef.classList.remove("d-none");
+        counterRef.classList.add("d-flex");
         counterRef.innerHTML = totalAmounts();
-    } else if (baskedDishes.length == 0){
-        counterRef.classList.add('d-none');
-        counterRef.classList.remove('d-flex');
+    } else if (baskedDishes.length == 0) {
+        counterRef.classList.add("d-none");
+        counterRef.classList.remove("d-flex");
     }
 }
 
-function totalAmounts(){
+function totalAmounts() {
     let totalAmount = 0;
-
     for (let amountI = 0; amountI < myDishes.length; amountI++) {
         totalAmount += myDishes[amountI].amount;
     }
-
-    return totalAmount
+    return totalAmount;
 }

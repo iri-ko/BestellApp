@@ -205,16 +205,16 @@ main {
 
             @media (max-width: 1000px) {
                 width: 100%;
+                top: 0;
                 height: 100dvh;
-                top: -80px;
-                padding: 80px 60px;
-                position: absolute;
+                padding: 100px 60px;
+                position: fixed;
                 z-index: 200;
                 background-color: white;
                 overflow: auto;
             }
             @media (max-width: 650px) {
-                padding: 100px 20px;
+                padding: 150px 20px 0px 20px;
             }
 
             .basket {
@@ -229,7 +229,7 @@ main {
                 .basket-content {
                     display: flex;
                     flex-direction: column;
-                    height: 300px;
+                    height: 240px;
                     overflow: auto;
 
                     .basket-item {
